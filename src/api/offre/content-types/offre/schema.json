@@ -1,0 +1,37 @@
+{
+  "kind": "collectionType",
+  "collectionName": "offres",
+  "info": {
+    "singularName": "offre",
+    "pluralName": "offres",
+    "displayName": "Offre"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "NomOffre": {
+      "type": "string",
+      "required": true
+    },
+    "MiniResume": {
+      "type": "text",
+      "required": false
+    },
+    "Resume": {
+      "type": "text",
+      "required": false
+    },
+    "InfosComplementaires": {
+      "type": "text"
+    },
+    "Image": {
+      "allowedTypes": [
+        "images"
+      ],
+      "type": "media",
+      "multiple": true
+    }
+  }
+}
