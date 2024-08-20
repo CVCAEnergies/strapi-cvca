@@ -362,6 +362,39 @@ export interface AdminTransferTokenPermission extends Schema.CollectionType {
   };
 }
 
+export interface ApiChiffreChiffre extends Schema.SingleType {
+  collectionName: 'chiffres';
+  info: {
+    singularName: 'chiffre';
+    pluralName: 'chiffres';
+    displayName: 'Chiffre';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    NombreAnnees: Attribute.Integer & Attribute.Required;
+    NombreEmployes: Attribute.Integer & Attribute.Required;
+    NombreChantiers: Attribute.Integer & Attribute.Required;
+    NombreAgences: Attribute.Integer & Attribute.Required;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::chiffre.chiffre',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::chiffre.chiffre',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
 export interface ApiOffreOffre extends Schema.CollectionType {
   collectionName: 'offres';
   info: {
@@ -832,6 +865,7 @@ declare module '@strapi/types' {
       'admin::api-token-permission': AdminApiTokenPermission;
       'admin::transfer-token': AdminTransferToken;
       'admin::transfer-token-permission': AdminTransferTokenPermission;
+      'api::chiffre.chiffre': ApiChiffreChiffre;
       'api::offre.offre': ApiOffreOffre;
       'plugin::upload.file': PluginUploadFile;
       'plugin::upload.folder': PluginUploadFolder;

@@ -1,0 +1,31 @@
+{
+  "kind": "singleType",
+  "collectionName": "chiffres",
+  "info": {
+    "singularName": "chiffre",
+    "pluralName": "chiffres",
+    "displayName": "Chiffre"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "NombreAnnees": {
+      "type": "integer",
+      "required": true
+    },
+    "NombreEmployes": {
+      "type": "integer",
+      "required": true
+    },
+    "NombreChantiers": {
+      "type": "integer",
+      "required": true
+    },
+    "NombreAgences": {
+      "type": "integer",
+      "required": true
+    }
+  }
+}
