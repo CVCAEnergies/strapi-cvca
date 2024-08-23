@@ -1,0 +1,28 @@
+{
+  "kind": "collectionType",
+  "collectionName": "valeurs",
+  "info": {
+    "singularName": "valeur",
+    "pluralName": "valeurs",
+    "displayName": "Valeur"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "NomValeur": {
+      "type": "string"
+    },
+    "Texte": {
+      "type": "string"
+    },
+    "Icone": {
+      "allowedTypes": [
+        "images"
+      ],
+      "type": "media",
+      "multiple": false
+    }
+  }
+}

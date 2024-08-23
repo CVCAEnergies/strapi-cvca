@@ -1054,6 +1054,38 @@ export interface ApiSecteurSecteur extends Schema.CollectionType {
   };
 }
 
+export interface ApiValeurValeur extends Schema.CollectionType {
+  collectionName: 'valeurs';
+  info: {
+    singularName: 'valeur';
+    pluralName: 'valeurs';
+    displayName: 'Valeur';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    NomValeur: Attribute.String;
+    Texte: Attribute.String;
+    Icone: Attribute.Media<'images'>;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::valeur.valeur',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::valeur.valeur',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
 declare module '@strapi/types' {
   export module Shared {
     export interface ContentTypes {
@@ -1079,6 +1111,7 @@ declare module '@strapi/types' {
       'api::offre.offre': ApiOffreOffre;
       'api::reference.reference': ApiReferenceReference;
       'api::secteur.secteur': ApiSecteurSecteur;
+      'api::valeur.valeur': ApiValeurValeur;
     }
   }
 }
