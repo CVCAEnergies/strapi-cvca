@@ -362,73 +362,6 @@ export interface AdminTransferTokenPermission extends Schema.CollectionType {
   };
 }
 
-export interface ApiChiffreChiffre extends Schema.SingleType {
-  collectionName: 'chiffres';
-  info: {
-    singularName: 'chiffre';
-    pluralName: 'chiffres';
-    displayName: 'Chiffre';
-  };
-  options: {
-    draftAndPublish: true;
-  };
-  attributes: {
-    NombreAnnees: Attribute.Integer & Attribute.Required;
-    NombreEmployes: Attribute.Integer & Attribute.Required;
-    NombreChantiers: Attribute.Integer & Attribute.Required;
-    NombreAgences: Attribute.Integer & Attribute.Required;
-    createdAt: Attribute.DateTime;
-    updatedAt: Attribute.DateTime;
-    publishedAt: Attribute.DateTime;
-    createdBy: Attribute.Relation<
-      'api::chiffre.chiffre',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private;
-    updatedBy: Attribute.Relation<
-      'api::chiffre.chiffre',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private;
-  };
-}
-
-export interface ApiOffreOffre extends Schema.CollectionType {
-  collectionName: 'offres';
-  info: {
-    singularName: 'offre';
-    pluralName: 'offres';
-    displayName: 'Offre';
-  };
-  options: {
-    draftAndPublish: true;
-  };
-  attributes: {
-    NomOffre: Attribute.String & Attribute.Required;
-    MiniResume: Attribute.Text;
-    Resume: Attribute.Text;
-    InfosComplementaires: Attribute.Text;
-    Image: Attribute.Media<'images', true>;
-    createdAt: Attribute.DateTime;
-    updatedAt: Attribute.DateTime;
-    publishedAt: Attribute.DateTime;
-    createdBy: Attribute.Relation<
-      'api::offre.offre',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private;
-    updatedBy: Attribute.Relation<
-      'api::offre.offre',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private;
-  };
-}
-
 export interface PluginUploadFile extends Schema.CollectionType {
   collectionName: 'files';
   info: {
@@ -855,6 +788,272 @@ export interface PluginI18NLocale extends Schema.CollectionType {
   };
 }
 
+export interface ApiCandidatureCandidature extends Schema.CollectionType {
+  collectionName: 'candidatures';
+  info: {
+    singularName: 'candidature';
+    pluralName: 'candidatures';
+    displayName: 'Candidature';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    nom: Attribute.String;
+    prenom: Attribute.String;
+    email: Attribute.String;
+    tel: Attribute.String;
+    objet: Attribute.String;
+    message: Attribute.Text;
+    cv: Attribute.Media<'files'>;
+    motiv: Attribute.Media<'files'>;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::candidature.candidature',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::candidature.candidature',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
+export interface ApiChiffreChiffre extends Schema.SingleType {
+  collectionName: 'chiffres';
+  info: {
+    singularName: 'chiffre';
+    pluralName: 'chiffres';
+    displayName: 'Chiffre';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    NombreAnnees: Attribute.Integer & Attribute.Required;
+    NombreEmployes: Attribute.Integer & Attribute.Required;
+    NombreChantiers: Attribute.Integer & Attribute.Required;
+    NombreAgences: Attribute.Integer & Attribute.Required;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::chiffre.chiffre',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::chiffre.chiffre',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
+export interface ApiDomaineDomaine extends Schema.CollectionType {
+  collectionName: 'domaines';
+  info: {
+    singularName: 'domaine';
+    pluralName: 'domaines';
+    displayName: 'Domaine';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    NomDomaine: Attribute.String & Attribute.Required;
+    references: Attribute.Relation<
+      'api::domaine.domaine',
+      'manyToMany',
+      'api::reference.reference'
+    >;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::domaine.domaine',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::domaine.domaine',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
+export interface ApiMessageMessage extends Schema.CollectionType {
+  collectionName: 'messages';
+  info: {
+    singularName: 'message';
+    pluralName: 'messages';
+    displayName: 'Message';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    Nom: Attribute.String;
+    Prenom: Attribute.String;
+    Entreprise: Attribute.String;
+    Telephone: Attribute.String;
+    Mail: Attribute.String;
+    Message: Attribute.Text;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::message.message',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::message.message',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
+export interface ApiOffreOffre extends Schema.CollectionType {
+  collectionName: 'offres';
+  info: {
+    singularName: 'offre';
+    pluralName: 'offres';
+    displayName: 'Offre';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    NomOffre: Attribute.String & Attribute.Required;
+    MiniResume: Attribute.Text;
+    Resume: Attribute.Text;
+    InfosComplementaires: Attribute.Text;
+    Image: Attribute.Media<'images', true>;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::offre.offre',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::offre.offre',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
+export interface ApiReferenceReference extends Schema.CollectionType {
+  collectionName: 'references';
+  info: {
+    singularName: 'reference';
+    pluralName: 'references';
+    displayName: 'Reference';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    NomChantier: Attribute.String & Attribute.Required;
+    LocalisationChantier: Attribute.String & Attribute.Required;
+    SousTitre: Attribute.String & Attribute.Required;
+    Description: Attribute.Text & Attribute.Required;
+    MontantChantier: Attribute.String & Attribute.Required;
+    MaitreOuvrage: Attribute.String & Attribute.Required;
+    Architecte: Attribute.String & Attribute.Required;
+    BureauEtude: Attribute.String & Attribute.Required;
+    DateLivraison: Attribute.String & Attribute.Required;
+    DureeChantier: Attribute.String & Attribute.Required;
+    MissionsCVCA: Attribute.Text & Attribute.Required;
+    Premiere: Attribute.Media<'images'>;
+    Baniere: Attribute.Media<'images'>;
+    Photos: Attribute.Media<'images', true>;
+    domaines: Attribute.Relation<
+      'api::reference.reference',
+      'manyToMany',
+      'api::domaine.domaine'
+    >;
+    secteur: Attribute.Relation<
+      'api::reference.reference',
+      'manyToOne',
+      'api::secteur.secteur'
+    >;
+    Lot: Attribute.String;
+    PremierePage: Attribute.Boolean & Attribute.DefaultTo<false>;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::reference.reference',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::reference.reference',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
+export interface ApiSecteurSecteur extends Schema.CollectionType {
+  collectionName: 'secteurs';
+  info: {
+    singularName: 'secteur';
+    pluralName: 'secteurs';
+    displayName: 'Secteur';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    NomSecteur: Attribute.String & Attribute.Required;
+    Description: Attribute.Text & Attribute.Required;
+    references: Attribute.Relation<
+      'api::secteur.secteur',
+      'oneToMany',
+      'api::reference.reference'
+    >;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::secteur.secteur',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::secteur.secteur',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
 declare module '@strapi/types' {
   export module Shared {
     export interface ContentTypes {
@@ -865,8 +1064,6 @@ declare module '@strapi/types' {
       'admin::api-token-permission': AdminApiTokenPermission;
       'admin::transfer-token': AdminTransferToken;
       'admin::transfer-token-permission': AdminTransferTokenPermission;
-      'api::chiffre.chiffre': ApiChiffreChiffre;
-      'api::offre.offre': ApiOffreOffre;
       'plugin::upload.file': PluginUploadFile;
       'plugin::upload.folder': PluginUploadFolder;
       'plugin::content-releases.release': PluginContentReleasesRelease;
@@ -875,6 +1072,13 @@ declare module '@strapi/types' {
       'plugin::users-permissions.role': PluginUsersPermissionsRole;
       'plugin::users-permissions.user': PluginUsersPermissionsUser;
       'plugin::i18n.locale': PluginI18NLocale;
+      'api::candidature.candidature': ApiCandidatureCandidature;
+      'api::chiffre.chiffre': ApiChiffreChiffre;
+      'api::domaine.domaine': ApiDomaineDomaine;
+      'api::message.message': ApiMessageMessage;
+      'api::offre.offre': ApiOffreOffre;
+      'api::reference.reference': ApiReferenceReference;
+      'api::secteur.secteur': ApiSecteurSecteur;
     }
   }
 }

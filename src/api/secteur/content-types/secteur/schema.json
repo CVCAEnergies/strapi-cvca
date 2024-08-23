@@ -1,0 +1,29 @@
+{
+  "kind": "collectionType",
+  "collectionName": "secteurs",
+  "info": {
+    "singularName": "secteur",
+    "pluralName": "secteurs",
+    "displayName": "Secteur"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "NomSecteur": {
+      "type": "string",
+      "required": true
+    },
+    "Description": {
+      "type": "text",
+      "required": true
+    },
+    "references": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::reference.reference",
+      "mappedBy": "secteur"
+    }
+  }
+}

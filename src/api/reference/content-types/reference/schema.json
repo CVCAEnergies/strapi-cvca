@@ -1,0 +1,103 @@
+{
+  "kind": "collectionType",
+  "collectionName": "references",
+  "info": {
+    "singularName": "reference",
+    "pluralName": "references",
+    "displayName": "Reference",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "NomChantier": {
+      "type": "string",
+      "required": true
+    },
+    "LocalisationChantier": {
+      "type": "string",
+      "required": true
+    },
+    "SousTitre": {
+      "type": "string",
+      "required": true
+    },
+    "Description": {
+      "type": "text",
+      "required": true
+    },
+    "MontantChantier": {
+      "type": "string",
+      "required": true
+    },
+    "MaitreOuvrage": {
+      "type": "string",
+      "required": true
+    },
+    "Architecte": {
+      "type": "string",
+      "required": true
+    },
+    "BureauEtude": {
+      "type": "string",
+      "required": true
+    },
+    "DateLivraison": {
+      "type": "string",
+      "required": true
+    },
+    "DureeChantier": {
+      "type": "string",
+      "required": true
+    },
+    "MissionsCVCA": {
+      "type": "text",
+      "required": true
+    },
+    "Premiere": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": [
+        "images"
+      ]
+    },
+    "Baniere": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": [
+        "images"
+      ]
+    },
+    "Photos": {
+      "type": "media",
+      "multiple": true,
+      "required": false,
+      "allowedTypes": [
+        "images"
+      ]
+    },
+    "domaines": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::domaine.domaine",
+      "inversedBy": "references"
+    },
+    "secteur": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::secteur.secteur",
+      "inversedBy": "references"
+    },
+    "Lot": {
+      "type": "string"
+    },
+    "PremierePage": {
+      "type": "boolean",
+      "default": false
+    }
+  }
+}

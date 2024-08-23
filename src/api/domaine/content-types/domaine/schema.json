@@ -1,0 +1,25 @@
+{
+  "kind": "collectionType",
+  "collectionName": "domaines",
+  "info": {
+    "singularName": "domaine",
+    "pluralName": "domaines",
+    "displayName": "Domaine"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "NomDomaine": {
+      "type": "string",
+      "required": true
+    },
+    "references": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::reference.reference",
+      "mappedBy": "domaines"
+    }
+  }
+}
