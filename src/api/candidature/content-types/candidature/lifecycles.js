@@ -2,19 +2,20 @@ module.exports = {
     async afterCreate(event) {
       const { result } = event;
   
-      // Envoi d'un email via le plugin email de Strapi
       try {
-        await strapi.plugin('email').service('email').send({
-          to: 'nathan.crincket@etu.imt-nord-europe.fr', // Adresse de réception
-          subject: 'Nouvelle candidature reçue',
-          text: `Une nouvelle candidature a été soumise par : ${result.name}.`,
-          html: `<p>Une nouvelle candidature a été soumise par : <strong>${result.name}</strong>.</p>`,
-        });
+        // Log visible via une action ou email
+        console.log(`Nouvelle candidature créée : ${JSON.stringify(result)}`);
   
-        strapi.log.info('Email envoyé avec succès.');
+        await strapi.plugin('email').service('email').send({
+          to: 'nathan.crincket@etu.imt-nord-europe.fr', // Ton adresse email pour vérifier
+          subject: 'Test Lifecycle Hook',
+          text: `Une nouvelle candidature a été ajoutée avec les informations suivantes : ${JSON.stringify(result)}`,
+          html: `<p>Une nouvelle candidature a été ajoutée :</p><pre>${JSON.stringify(result)}</pre>`,
+        });
       } catch (err) {
-        strapi.log.error('Erreur lors de l\'envoi de l\'email :', err);
+        console.log(`Erreur lors de l'exécution du lifecycle : ${err.message}`);
       }
     },
   };
+  
   
