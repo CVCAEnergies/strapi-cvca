@@ -4,7 +4,8 @@
   "info": {
     "singularName": "domaine",
     "pluralName": "domaines",
-    "displayName": "Domaine"
+    "displayName": "Domaine",
+    "description": ""
   },
   "options": {
     "draftAndPublish": true
@@ -20,6 +21,12 @@
       "relation": "manyToMany",
       "target": "api::reference.reference",
       "mappedBy": "domaines"
+    },
+    "Description": {
+      "type": "text"
+    },
+    "LeSaviezVous": {
+      "type": "text"
     }
   }
 }
